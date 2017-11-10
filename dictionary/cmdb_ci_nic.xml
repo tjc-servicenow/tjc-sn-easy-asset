@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="cmdb_ci_network_adapter" label="Cloud Mgmt Network Interface" max_length="40" name="cmdb_ci_nic" type="collection">
+        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" read_only="true" reference="x_tjc_easy_asset_requisition" type="reference"/>
+    </element>
+</database>

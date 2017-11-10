@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="Requisition" max_length="40" name="x_tjc_easy_asset_requisition" type="collection">
+        <element display="true" label="Requisition Number" mandatory="true" max_length="40" name="requisition_number" type="string"/>
+    </element>
+</database>

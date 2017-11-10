@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="cmdb_ci_storage_pool" label="Veritas Plex" max_length="40" name="cmdb_ci_veritas_plex" type="collection">
+        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" read_only="true" reference="x_tjc_easy_asset_requisition" type="reference"/>
+    </element>
+</database>
