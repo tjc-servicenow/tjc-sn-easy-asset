@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>07e53c2b139a8300c6f5ff82e144b0bb</enforce_acl>
+        <http_method>GET</http_method>
+        <name>getpo</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	var reqSysID = String(request.queryParams.sys_id);
+	return (new EasyAssetHelper().getPO(reqSysID));
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_tjc_easy_asset/easyasset/getpo</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/getpo</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-14 22:38:37</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>6ea379bf1396c300c6f5ff82e144b023</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>getpo</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sys_ws_operation_6ea379bf1396c300c6f5ff82e144b023</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-15 23:26:16</sys_updated_on>
+        <web_service_definition display_value="easyasset">488ccf5313d683085b11345fd144b038</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

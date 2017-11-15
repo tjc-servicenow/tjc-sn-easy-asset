@@ -5,41 +5,83 @@
             <element>requisition_number</element>
             <position>0</position>
             <sys_created_by>jha</sys_created_by>
-            <sys_created_on>2017-11-10 21:52:02</sys_created_on>
-            <sys_id>7ed209e213960300c6f5ff82e144b03d</sys_id>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>4e9f0548136ec300c6f5ff82e144b03f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
             <sys_updated_by>jha</sys_updated_by>
-            <sys_updated_on>2017-11-10 21:52:02</sys_updated_on>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>stage</element>
+            <position>1</position>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>ce9f0548136ec300c6f5ff82e144b03f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>po_number</element>
+            <position>2</position>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>429f0548136ec300c6f5ff82e144b040</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>1</position>
+            <position>3</position>
             <sys_created_by>jha</sys_created_by>
-            <sys_created_on>2017-11-10 21:52:02</sys_created_on>
-            <sys_id>fed209e213960300c6f5ff82e144b03d</sys_id>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>c29f0548136ec300c6f5ff82e144b040</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
             <sys_updated_by>jha</sys_updated_by>
-            <sys_updated_on>2017-11-10 21:52:02</sys_updated_on>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>sys_created_by</element>
-            <position>2</position>
+            <position>4</position>
             <sys_created_by>jha</sys_created_by>
-            <sys_created_on>2017-11-10 21:52:02</sys_created_on>
-            <sys_id>72d209e213960300c6f5ff82e144b03e</sys_id>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>469f0548136ec300c6f5ff82e144b040</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
             <sys_updated_by>jha</sys_updated_by>
-            <sys_updated_on>2017-11-10 21:52:02</sys_updated_on>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>5</position>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 14:38:33</sys_created_on>
+            <sys_id>c69f0548136ec300c6f5ff82e144b040</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_tjc_easy_asset_requisition" sys_domain="global" view="Default view">7bb241e213960300c6f5ff82e144b096</sys_ui_section>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 14:38:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

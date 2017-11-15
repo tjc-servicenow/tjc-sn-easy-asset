@@ -8,8 +8,37 @@
 	$scope.submitted = false;
 	$scope.submitButtonText = $scope.data.messages.submit;
 	$scope.submit = function() {
+		var url = '/api/x_tjc_easy_asset/easyasset/create?' +
+			'table=' + $scope.deviceType +
+			'&quantity=' + $scope.quantity +
+			'&requisition_number=' + $scope.reim;
 		$scope.submitted = true;
 		$scope.submitButtonText = $scope.data.messages.submitted;
+		
+		var httpResponse = $http.post(url).then(
+			function(result) {
+				if (result.data.result.code != 'SUCCESS') {
+					spUtil.addErrorMessage('Something went wrong: ' + result.data.result);
+					console.log(result);
+				}
+			}, function(error) {
+				var errorMessage = 'Something went wrong: ';
+				var errorCode = 'HIPPOPOTAMUS';
+				
+				if (error.status == 400) {errorCode = 'COAL'}
+				if (error.status == 401) {errorCode = 'IRON'}
+				if (error.status == 402) {errorCode = 'REDSTONE'}
+				if (error.status == 403) {errorCode = 'DIAMONDS'}
+				if (error.status == 404) {errorCode = 'VOID'}
+				if (error.status == 405) {errorCode = 'LAPIS'}
+				if (error.status == 406) {errorCode = 'SANDSTONE'}
+				if (error.status == 408) {errorCode = 'GOLD'}
+				if (error.status == 409) {errorCode = 'QUARTZ'}
+				
+				spUtil.addErrorMessage(errorMessage + errorCode);
+				console.log(error);
+			}
+		);
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -54,7 +83,7 @@
         <sys_created_on>2017-11-09 21:40:23</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>ea96770213920f44c6f5ff82e144b052</sys_id>
-        <sys_mod_count>84</sys_mod_count>
+        <sys_mod_count>116</sys_mod_count>
         <sys_name>Easy Asset Create</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -62,7 +91,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_widget_ea96770213920f44c6f5ff82e144b052</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-10 23:02:43</sys_updated_on>
+        <sys_updated_on>2017-11-15 22:41:05</sys_updated_on>
         <template><![CDATA[<div>
   <div class="form-group">
     <label for="deviceType">Please choose the device type:</label>

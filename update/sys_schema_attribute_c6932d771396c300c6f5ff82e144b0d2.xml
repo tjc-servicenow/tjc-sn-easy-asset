@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_schema_attribute">
+    <sys_schema_attribute action="INSERT_OR_UPDATE">
+        <applies_to>COLUMN</applies_to>
+        <applies_to_description/>
+        <column_on_table display_value="Stage" element="stage" name="x_tjc_easy_asset_requisition">b341a5371396c300c6f5ff82e144b093</column_on_table>
+        <column_type display_value="Integer">aab367c1bf3320001875647fcf073909</column_type>
+        <description>Identifies the list of inactive state values.</description>
+        <label>Close States</label>
+        <name>x_tjc_easyasset_close_states</name>
+        <on_table display_value="Requisition" name="x_tjc_easy_asset_requisition">3501c12213960300c6f5ff82e144b057</on_table>
+        <read_roles/>
+        <remove_roles/>
+        <sys_class_name>sys_schema_attribute</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-14 21:29:08</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c6932d771396c300c6f5ff82e144b0d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Close States</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sys_schema_attribute_c6932d771396c300c6f5ff82e144b0d2</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-14 21:29:08</sys_updated_on>
+        <update_roles/>
+        <value_description>Inactive state integer values delimited by semicolons (;)</value_description>
+        <value_type display_value="String">747127c1bf3320001875647fcf0739e0</value_type>
+    </sys_schema_attribute>
+</record_update>

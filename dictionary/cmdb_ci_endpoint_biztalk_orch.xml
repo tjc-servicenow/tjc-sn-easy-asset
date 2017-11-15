@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element audit="true" extends="cmdb_ci_endpoint_inclusion" label="BizTalk Inclusion" max_length="40" name="cmdb_ci_endpoint_biztalk_orch" type="collection">
-        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" read_only="true" reference="x_tjc_easy_asset_requisition" type="reference"/>
+        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" reference="x_tjc_easy_asset_requisition" reference_floats="true" type="reference"/>
     </element>
 </database>

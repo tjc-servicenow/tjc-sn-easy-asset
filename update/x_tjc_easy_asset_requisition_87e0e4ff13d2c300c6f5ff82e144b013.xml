@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_tjc_easy_asset_requisition">
+    <x_tjc_easy_asset_requisition action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <po_number/>
+        <requisition_number>2001</requisition_number>
+        <stage/>
+        <sys_class_name>x_tjc_easy_asset_requisition</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-14 16:36:10</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>87e0e4ff13d2c300c6f5ff82e144b013</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>2001</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>x_tjc_easy_asset_requisition_87e0e4ff13d2c300c6f5ff82e144b013</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-14 16:36:10</sys_updated_on>
+    </x_tjc_easy_asset_requisition>
+</record_update>

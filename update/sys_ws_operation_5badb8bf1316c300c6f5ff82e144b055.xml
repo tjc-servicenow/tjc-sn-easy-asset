@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>07e53c2b139a8300c6f5ff82e144b0bb</enforce_acl>
+        <http_method>POST</http_method>
+        <name>update</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	try {
+		var reqSysID = request.queryParams.sys_id;
+		var po = request.queryParams.po;
+		var invoice = request.queryParams.invoice;
+		
+		if (invoice == 'undefined') invoice = '';
+		if (reqSysID == 'undefined' || po == 'undefined') {
+			throw {
+				code: 'COLDHEART', 
+				message: 'API Failure'
+			};
+		}
+		
+		return (new EasyAssetHelper().update(reqSysID.toString(), po.toString(), invoice.toString()));
+	} catch(e){
+		gs.error("Easy Asset API Error Code: " + e );
+		return "ERROR: " + e;
+	}
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_tjc_easy_asset/easyasset/update</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/update</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-14 18:43:42</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5badb8bf1316c300c6f5ff82e144b055</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>update</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sys_ws_operation_5badb8bf1316c300c6f5ff82e144b055</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-15 22:58:03</sys_updated_on>
+        <web_service_definition display_value="easyasset">488ccf5313d683085b11345fd144b038</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

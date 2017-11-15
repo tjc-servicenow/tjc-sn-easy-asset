@@ -7,7 +7,7 @@
         <bootstrap_alt>false</bootstrap_alt>
         <class_name/>
         <container_class_name/>
-        <name>EA create - Container 1</name>
+        <name>EA Create - Container 1</name>
         <order>1</order>
         <sp_page display_value="ea_create">b2767f8a13520f44c6f5ff82e144b07d</sp_page>
         <subheader>false</subheader>
@@ -16,15 +16,15 @@
         <sys_created_on>2017-11-09 21:39:52</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>7276b70213920f44c6f5ff82e144b08d</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>EA create - Container 1</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>EA Create - Container 1</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_container_7276b70213920f44c6f5ff82e144b08d</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-09 21:39:52</sys_updated_on>
+        <sys_updated_on>2017-11-15 22:55:55</sys_updated_on>
         <title/>
         <width>container</width>
     </sp_container>

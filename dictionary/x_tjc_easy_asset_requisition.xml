@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element attributes="update_synch=true" extends="sys_metadata" label="Requisition" max_length="40" name="x_tjc_easy_asset_requisition" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" read_only="true" type="boolean"/>
+        <element label="PO Number" max_length="40" name="po_number" type="string"/>
         <element display="true" label="Requisition Number" mandatory="true" max_length="40" name="requisition_number" type="string"/>
+        <element attributes="x_tjc_easyasset_close_states=2" choice="3" default="0" label="Stage" max_length="40" name="stage" type="integer">
+            <choice>
+                <element label="Waiting on PO" sequence="0" value="0"/>
+                <element label="Waiting on Arrival" sequence="1" value="1"/>
+                <element label="Arrived" sequence="2" value="2"/>
+            </choice>
+        </element>
     </element>
 </database>

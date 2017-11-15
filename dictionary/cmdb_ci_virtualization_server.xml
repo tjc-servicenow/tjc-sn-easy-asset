@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="cmdb_ci_server" label="Virtualization Server" max_length="40" name="cmdb_ci_virtualization_server" type="collection">
-        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" read_only="true" reference="x_tjc_easy_asset_requisition" type="reference"/>
+    <element extends="cmdb_ci_server" label="Virtualization Server" max_length="40" name="cmdb_ci_virtualization_server" sizeclass="1" type="collection">
+        <element label="Requisition Record" max_length="32" name="x_tjc_easy_asset_requisition_record" reference="x_tjc_easy_asset_requisition" reference_floats="true" type="reference"/>
     </element>
 </database>

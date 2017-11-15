@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="x_tjc_easy_asset_requisition" relationship="" sys_domain="global" table="cmdb" version="2" view="easy_asset">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="cmdb" element="NULL" name="cmdb" parent="x_tjc_easy_asset_requisition" relationship="NULL" sys_domain="global" view="347a828013eec300c6f5ff82e144b0b7">acba0ac413eec300c6f5ff82e144b033</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 18:56:47</sys_created_on>
+            <sys_id>24ba0ac413eec300c6f5ff82e144b034</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 18:56:47</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>asset</element>
+            <list_id display_value="cmdb" element="NULL" name="cmdb" parent="x_tjc_easy_asset_requisition" relationship="NULL" sys_domain="global" view="347a828013eec300c6f5ff82e144b0b7">acba0ac413eec300c6f5ff82e144b033</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 18:56:47</sys_created_on>
+            <sys_id>a4ba0ac413eec300c6f5ff82e144b034</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 18:56:47</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>po_number</element>
+            <list_id display_value="cmdb" element="NULL" name="cmdb" parent="x_tjc_easy_asset_requisition" relationship="NULL" sys_domain="global" view="347a828013eec300c6f5ff82e144b0b7">acba0ac413eec300c6f5ff82e144b033</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 18:56:47</sys_created_on>
+            <sys_id>28ba0ac413eec300c6f5ff82e144b034</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 18:56:47</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>invoice_number</element>
+            <list_id display_value="cmdb" element="NULL" name="cmdb" parent="x_tjc_easy_asset_requisition" relationship="NULL" sys_domain="global" view="347a828013eec300c6f5ff82e144b0b7">acba0ac413eec300c6f5ff82e144b033</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 18:56:47</sys_created_on>
+            <sys_id>a8ba0ac413eec300c6f5ff82e144b034</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 18:56:47</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>cmdb</name>
+            <parent>x_tjc_easy_asset_requisition</parent>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>jha</sys_created_by>
+            <sys_created_on>2017-11-15 18:56:47</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>acba0ac413eec300c6f5ff82e144b033</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>cmdb</sys_name>
+            <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+            <sys_update_name>sys_ui_list_cmdb_x_tjc_easy_asset_requisition_easy_asset</sys_update_name>
+            <sys_updated_by>jha</sys_updated_by>
+            <sys_updated_on>2017-11-15 18:56:47</sys_updated_on>
+            <sys_user/>
+            <view display_value="Easy Asset" name="easy_asset">347a828013eec300c6f5ff82e144b0b7</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

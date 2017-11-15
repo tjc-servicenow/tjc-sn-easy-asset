@@ -3,17 +3,17 @@
     <sys_ui_related sys_domain="global" table="x_tjc_easy_asset_requisition" version="2" view="">
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Requisition - Default view" name="x_tjc_easy_asset_requisition" related_list="NULL" sys_domain="global" view="Default view">0b854d6613960300c6f5ff82e144b08b</list_id>
+            <list_id display_value="Requisition - Default view" name="x_tjc_easy_asset_requisition" related_list="NULL" sys_domain="global" view="Default view">80ee028813eec300c6f5ff82e144b095</list_id>
             <order_by/>
             <position>0</position>
             <related_list>cmdb.x_tjc_easy_asset_requisition_record</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
             <sys_created_by>jha</sys_created_by>
-            <sys_created_on>2017-11-10 22:03:47</sys_created_on>
-            <sys_id>c7854d6613960300c6f5ff82e144b08c</sys_id>
+            <sys_created_on>2017-11-15 19:15:02</sys_created_on>
+            <sys_id>48ee028813eec300c6f5ff82e144b095</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>jha</sys_updated_by>
-            <sys_updated_on>2017-11-10 22:03:47</sys_updated_on>
+            <sys_updated_on>2017-11-15 19:15:02</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list action="INSERT_OR_UPDATE">
             <calculated_name>Requisition - Default view</calculated_name>
@@ -24,11 +24,11 @@
             <related_list/>
             <sys_class_name>sys_ui_related_list</sys_class_name>
             <sys_created_by>jha</sys_created_by>
-            <sys_created_on>2017-11-10 22:03:47</sys_created_on>
+            <sys_created_on>2017-11-15 19:15:02</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>0b854d6613960300c6f5ff82e144b08b</sys_id>
+            <sys_id>80ee028813eec300c6f5ff82e144b095</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Requisition - Default view</sys_name>
             <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
@@ -37,7 +37,7 @@
             <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
             <sys_update_name>sys_ui_related_x_tjc_easy_asset_requisition_null</sys_update_name>
             <sys_updated_by>jha</sys_updated_by>
-            <sys_updated_on>2017-11-10 22:03:47</sys_updated_on>
+            <sys_updated_on>2017-11-15 19:15:02</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

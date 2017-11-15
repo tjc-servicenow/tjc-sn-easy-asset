@@ -37,11 +37,11 @@
         <name>cmdb_equipment_item</name>
         <next_element/>
         <primary>false</primary>
-        <read_only>true</read_only>
+        <read_only>false</read_only>
         <read_roles/>
         <reference display_value="" name="x_tjc_easy_asset_requisition">x_tjc_easy_asset_requisition</reference>
         <reference_cascade_rule/>
-        <reference_floats>false</reference_floats>
+        <reference_floats>true</reference_floats>
         <reference_key/>
         <reference_qual/>
         <reference_qual_condition/>
