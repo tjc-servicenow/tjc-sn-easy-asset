@@ -8,10 +8,14 @@
 	$scope.submitted = false;
 	$scope.submitButtonText = $scope.data.messages.submit;
 	$scope.submit = function() {
-		var url = '/api/x_tjc_easy_asset/easyasset/create?' +
-			'table=' + $scope.deviceType +
-			'&quantity=' + $scope.quantity +
-			'&requisition_number=' + $scope.reim;
+		var url = '/api/x_tjc_easy_asset/easyasset/create?' + 
+				'table=' + $scope.deviceType +
+				'&quantity=' + $scope.quantity +
+				'&requisition_number=' + $scope.reim +
+				'&cost_center=' + $scope.options.cost_center + 
+				'&gl_account=' + $scope.options.gl_account +
+				'&cost=' + $scope.cost + 
+				'&currency=' + $scope.options.currency;
 		$scope.submitted = true;
 		$scope.submitButtonText = $scope.data.messages.submitted;
 		
@@ -53,7 +57,7 @@
         <internal>false</internal>
         <link/>
         <name>Easy Asset Create</name>
-        <option_schema/>
+        <option_schema>[{"name":"gl_account","label":"GL Account","type":"string"},{"displayValue":"Cost Center","name":"cost_center","label":"Cost center","type":"reference","value":"cmn_cost_center","ed":{"reference":"cmn_cost_center"}},{"name":"currency","default_value":"USD","label":"Currency","type":"choice","choices":[{"label":"EUR","value":"EUR"},{"label":"GBP","value":"GBP"},{"label":"USD","value":"USD"}]}]</option_schema>
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
@@ -83,7 +87,7 @@
         <sys_created_on>2017-11-09 21:40:23</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>ea96770213920f44c6f5ff82e144b052</sys_id>
-        <sys_mod_count>116</sys_mod_count>
+        <sys_mod_count>121</sys_mod_count>
         <sys_name>Easy Asset Create</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -91,7 +95,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_widget_ea96770213920f44c6f5ff82e144b052</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-15 22:41:05</sys_updated_on>
+        <sys_updated_on>2017-11-16 21:31:56</sys_updated_on>
         <template><![CDATA[<div>
   <div class="form-group">
     <label for="deviceType">Please choose the device type:</label>
@@ -111,10 +115,14 @@
     <input ng-model="reim" type="text" class="form-control">
   </div>
   
+  <div class="form-group">
+    <label for="cost">Cost per item (not total)</label>
+    <input ng-model="cost" type="number" placeholder="1000.00" class="form-control">
+  </div>
+  
   <button class="btn btn-primary btn-block" ng-disabled="submitted" ng-click="submit()">
     {{submitButtonText}}
   </button>
-
 </div>]]></template>
     </sp_widget>
 </record_update>

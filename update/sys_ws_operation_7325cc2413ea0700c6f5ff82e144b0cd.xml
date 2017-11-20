@@ -6,52 +6,40 @@
         <consumes_customized>false</consumes_customized>
         <default_operation_uri/>
         <enforce_acl>07e53c2b139a8300c6f5ff82e144b0bb</enforce_acl>
-        <http_method>POST</http_method>
-        <name>create</name>
+        <http_method>PATCH</http_method>
+        <name>arrived</name>
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	var sys_id = request.queryParams.sys_id;
+	
 	try {
-		var table = String(request.queryParams.table);
-		var quantity = String(request.queryParams.quantity);
-		var requisitionNumber = String(request.queryParams.requisition_number);
-		var cost_center = String(request.queryParams.cost_center);
-		var gl_account = String(request.queryParams.gl_account);
-		var cost = String(request.queryParams.cost);
-		var currency = String(request.queryParams.currency);
-		
-		if (table == 'undefined' || quantity == 'undefined' || requisitionNumber == 'undefined') throw 'CAT';
-		if (cost_center == 'undefined') cost_center = '';
-		if (gl_account == 'undefined') gl_account = '';
-		if (cost == 'undefined') cost = '';
-		if (currency == 'undefined') currency = '';
-		
-		return new EasyAssetHelper().createRecords(table, quantity, requisitionNumber, cost_center, gl_account, cost, currency);
+		return new EasyAssetHelper().arrive(sys_id.toString());
 	} catch(e) {		
 		gs.error("Easy Asset API Error: " + e );
 		return { code: 'COLDHEART', message: 'API Failure' };
 	}
 })(request, response);]]></operation_script>
-        <operation_uri>/api/x_tjc_easy_asset/easyasset/create</operation_uri>
+        <operation_uri>/api/x_tjc_easy_asset/easyasset/arrived</operation_uri>
         <produces>application/json,application/xml,text/xml</produces>
         <produces_customized>false</produces_customized>
-        <relative_path>/create</relative_path>
+        <relative_path>/arrived</relative_path>
         <request_example/>
         <requires_acl_authorization>true</requires_acl_authorization>
         <requires_authentication>true</requires_authentication>
         <short_description/>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>jha</sys_created_by>
-        <sys_created_on>2017-11-13 15:51:26</sys_created_on>
+        <sys_created_on>2017-11-16 22:34:11</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>e40dcb9313d683085b11345fd144b048</sys_id>
-        <sys_mod_count>22</sys_mod_count>
-        <sys_name>create</sys_name>
+        <sys_id>7325cc2413ea0700c6f5ff82e144b0cd</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>arrived</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
-        <sys_update_name>sys_ws_operation_e40dcb9313d683085b11345fd144b048</sys_update_name>
+        <sys_update_name>sys_ws_operation_7325cc2413ea0700c6f5ff82e144b0cd</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:20:34</sys_updated_on>
+        <sys_updated_on>2017-11-20 16:48:53</sys_updated_on>
         <web_service_definition display_value="easyasset">488ccf5313d683085b11345fd144b038</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>

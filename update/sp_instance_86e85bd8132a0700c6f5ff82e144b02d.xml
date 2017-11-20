@@ -11,37 +11,24 @@
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="2">8957f8ab139a8300c6f5ff82e144b09e</sp_column>
-        <sp_widget display_value="Easy Asset Create">ea96770213920f44c6f5ff82e144b052</sp_widget>
+        <sp_column display_value="2">aae7d65c13e60700c6f5ff82e144b0cc</sp_column>
+        <sp_widget display_value="Easy Asset Arrive">55b8129c13e60700c6f5ff82e144b0a0</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>jha</sys_created_by>
-        <sys_created_on>2017-11-13 23:35:46</sys_created_on>
+        <sys_created_on>2017-11-16 19:16:58</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>73573cab139a8300c6f5ff82e144b0f1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_id>86e85bd8132a0700c6f5ff82e144b02d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
-        <sys_update_name>sp_instance_73573cab139a8300c6f5ff82e144b0f1</sys_update_name>
+        <sys_update_name>sp_instance_86e85bd8132a0700c6f5ff82e144b02d</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-16 21:32:25</sys_updated_on>
+        <sys_updated_on>2017-11-16 19:16:58</sys_updated_on>
         <title/>
         <url/>
-        <widget_parameters><![CDATA[{
-	"gl_account": {
-		"value": "777-777-777",
-		"displayValue": "777-777-777"
-	},
-	"cost_center": {
-		"value": "452eeb1813aa0700c6f5ff82e144b0ea",
-		"displayValue": "Easy Asset Cost Center"
-	},
-	"currency": {
-		"value": "USD",
-		"displayValue": "USD"
-	}
-}]]></widget_parameters>
+        <widget_parameters/>
     </sp_instance>
 </record_update>

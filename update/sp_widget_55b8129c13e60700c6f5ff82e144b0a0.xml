@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope,$http,spUtil) {
+  /* widget controller */
+  var c = this;
+	$scope.submitButtonText = $scope.data.messages.submit;
+	$scope.submitted = false;
+	$scope.requisitiontext = '';
+	
+	$scope.submit = function() {
+		var url = '/api/x_tjc_easy_asset/easyasset/arrived?' +
+				'sys_id=' + $scope.ponumber;
+		$scope.submitted = true;
+		$scope.submitButtonText = $scope.data.messages.submitting;
+		
+		try {
+			$http.patch(url).then(
+			function(r){
+				if (r.data.result.code != 'SUCCESS')
+					err(r.data.result);
+				else 
+					$scope.submitButtonText = $scope.data.messages.submitted;
+			})
+		}catch(e){
+			err({
+				code: e,
+				message: e
+			});
+		}
+	}
+	
+	$scope.setRequisition = function() {
+		if ($scope.ponumber == undefined) {
+			$scope.requisitiontext = '';
+			$('#requisitiongroup').hide();
+			$('#buttongroup').hide();
+		}
+		else {
+			var recID = $scope.ponumber;
+			for (var i = 0; i < $scope.data.requisitionOptions.length; i++) {
+				if ($scope.data.requisitionOptions[i].value == $scope.ponumber)
+					$scope.requisitiontext = $scope.data.requisitionOptions[i].rec;
+			}
+			$('#requisitiongroup').show();
+			$('#buttongroup').show();
+		}
+	}
+	
+	function err(o) {
+		console.log(o.message);
+		if (o.code == 400) {o.code = 'COAL'}
+		if (o.code == 401) {o.code = 'IRON'}
+		if (o.code == 402) {o.code = 'REDSTONE'}
+		if (o.code == 403) {o.code = 'DIAMONDS'}
+		if (o.code == 404) {o.code = 'VOID'}
+		if (o.code == 405) {o.code = 'LAPIS'}
+		if (o.code == 406) {o.code = 'SANDSTONE'}
+		if (o.code == 408) {o.code = 'GOLD'}
+		if (o.code == 409) {o.code = 'QUARTZ'}
+				
+		spUtil.addErrorMessage('Something went wrong: ' + o.code);
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>easy_asset_arrive</id>
+        <internal>false</internal>
+        <link/>
+        <name>Easy Asset Arrive</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.messages = {};
+	data.messages.submit = gs.getMessage('Mark Arrived');
+	data.messages.submitting = gs.getMessage('Updating Records...');
+	data.messages.submitted = gs.getMessage('Records Updated');
+	
+	// Poplulate PO options
+	data.requisitionOptions = [];
+	var requisition = new GlideRecord('x_tjc_easy_asset_requisition');
+	requisition.addQuery('active', 'true');
+	requisition.addQuery('stage', 1);
+	requisition.query();
+	
+	while (requisition.next()) {
+		var o = {};
+		o.display = requisition.getValue('po_number');
+		o.value = requisition.getUniqueValue();
+		o.rec = requisition.getValue('requisition_number');
+		data.requisitionOptions.push(o);
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-16 14:36:29</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>55b8129c13e60700c6f5ff82e144b0a0</sys_id>
+        <sys_mod_count>90</sys_mod_count>
+        <sys_name>Easy Asset Arrive</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_widget_55b8129c13e60700c6f5ff82e144b0a0</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-20 16:31:01</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="form-group">
+    <label for="ponumber">Select the PO Number</label>
+    <select ng-change="setRequisition()" class="form-control" ng-model="ponumber" required="true">
+      <option value="">-- Select One --</option>
+      <option ng-repeat="o in data.requisitionOptions" value="{{o.value}}">{{o.display}}</option>
+    </select>
+  </div>
+  
+  <div id="requisitiongroup" class="form-group" hidden>
+    <label for="requisition">Requisition Number</label>
+    <input id="requisition" placeholder="{{requisitiontext}}" ng-model="requisition" type="text" class="form-control" readonly>
+  </div>
+  
+  <div id="buttongroup" hidden>
+    <button class="btn btn-primary btn-block" ng-disabled="submitted" ng-click="submit()" hidden>
+      {{submitButtonText}}
+    </button>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
