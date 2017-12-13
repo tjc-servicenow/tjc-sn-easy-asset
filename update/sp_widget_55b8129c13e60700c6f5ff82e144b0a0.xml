@@ -14,20 +14,13 @@
 		$scope.submitted = true;
 		$scope.submitButtonText = $scope.data.messages.submitting;
 		
-		try {
-			$http.patch(url).then(
-			function(r){
-				if (r.data.result.code != 'SUCCESS')
-					err(r.data.result);
+		$http.patch(url).then(
+			function(r) {
+				if (r.data.result != 'SUCCESS')
+					err(r);
 				else 
 					$scope.submitButtonText = $scope.data.messages.submitted;
-			})
-		}catch(e){
-			err({
-				code: e,
-				message: e
-			});
-		}
+			}, function(e) { err(e) });
 	}
 	
 	$scope.setRequisition = function() {
@@ -47,19 +40,20 @@
 		}
 	}
 	
-	function err(o) {
-		console.log(o.message);
-		if (o.code == 400) {o.code = 'COAL'}
-		if (o.code == 401) {o.code = 'IRON'}
-		if (o.code == 402) {o.code = 'REDSTONE'}
-		if (o.code == 403) {o.code = 'DIAMONDS'}
-		if (o.code == 404) {o.code = 'VOID'}
-		if (o.code == 405) {o.code = 'LAPIS'}
-		if (o.code == 406) {o.code = 'SANDSTONE'}
-		if (o.code == 408) {o.code = 'GOLD'}
-		if (o.code == 409) {o.code = 'QUARTZ'}
-				
-		spUtil.addErrorMessage('Something went wrong: ' + o.code);
+	function err(e) {
+		var m = e.data.result;
+		if (e.status != 200) {
+			if (e.status == 400) {m = 'COAL'}
+			if (e.status == 401) {m = 'IRON'}
+			if (e.status == 402) {m = 'REDSTONE'}
+			if (e.status == 403) {m = 'DIAMONDS'}
+			if (e.status == 404) {m = 'VOID'}
+			if (e.status == 405) {m = 'LAPIS'}
+			if (e.status == 406) {m = 'SANDSTONE'}
+			if (e.status == 408) {m = 'GOLD'}
+			if (e.status == 409) {m = 'QUARTZ'}
+		}
+		spUtil.addErrorMessage('Something went wrong: ' + m);
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -104,7 +98,7 @@
         <sys_created_on>2017-11-16 14:36:29</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>55b8129c13e60700c6f5ff82e144b0a0</sys_id>
-        <sys_mod_count>90</sys_mod_count>
+        <sys_mod_count>92</sys_mod_count>
         <sys_name>Easy Asset Arrive</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -112,7 +106,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_widget_55b8129c13e60700c6f5ff82e144b0a0</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:31:01</sys_updated_on>
+        <sys_updated_on>2017-11-20 21:36:27</sys_updated_on>
         <template><![CDATA[<div>
   <div class="form-group">
     <label for="ponumber">Select the PO Number</label>

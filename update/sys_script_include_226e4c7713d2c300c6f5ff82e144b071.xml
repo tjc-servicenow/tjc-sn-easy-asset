@@ -12,89 +12,7 @@ EasyAssetHelper.prototype = {
     initialize: function() {
     },
 	
-	arrive: function(sys_id) {
-		var returnCode = {};
-		try {
-			returnCode.code = 'SUCCESS';
-			returnCode.message = '';
-			try {
-				var gr = new GlideRecord('x_tjc_easy_asset_requisition');
-				gr.get(sys_id);
-				gr.setValue('stage', 2);
-				gr.update();
-			} catch(e) {
-				returnCode.code = 'RISKRUNNER';
-				returnCode.message = e;
-			}
-			try {
-				var cmdb = new GlideRecord('cmdb');
-				cmdb.addQuery('x_tjc_easy_asset_requisition_record', sys_id);
-				cmdb.query();
-				
-				while (cmdb.next()) {
-					cmdb.delivery_date = new GlideDateTime();
-					cmdb.update();
-				}
-			} catch(e) {
-				returnCode.code = 'BOREALIS';
-				returnCode.message = e;
-			}
-		} catch(e){
-			returnCode.code = 'WARDCLIFFE COIL';
-			returnCode.message = e;
-		}
-		return returnCode;
-	},
-	
-	update: function(sys_id, po, invoice_number) {
-		var returnCode = {};
-		try {
-			returnCode.code = 'SUCCESS';
-			returnCode.message = '';
-			var ear = new GlideRecord('x_tjc_easy_asset_requisition');
-
-			try {
-				ear.get(sys_id);
-				ear.po_number = po;
-				ear.stage = 1;
-				ear.update();
-			}catch(e){
-				returnCode.code = 'FIGHTING LION';
-				returnCode.message = e;
-			}
-
-			var cmdb = new GlideRecord('cmdb');
-			try {
-				cmdb.addQuery('x_tjc_easy_asset_requisition_record', sys_id);
-				cmdb.query();
-				while (cmdb.next()) {
-					cmdb.po_number = po;
-					cmdb.invoice_number = invoice_number;
-					cmdb.order_date = new GlideDateTime();
-					cmdb.update();
-				}
-			}catch(e){
-				returnCode.code = 'SUNSHOT';
-				returnCode.message = e;
-			}
-		}catch(e){
-			returnCode.code = 'DARCI';
-			returnCode.message = e;
-		}
-		
-		return returnCode;
-	},
-	
-	getPO : function(sys_id) {
-		var gr = new GlideRecord('x_tjc_easy_asset_requisition');
-		gr.get(sys_id);
-		return gr.po_number.toString();
-	},
-	
 	createRecords : function(table, quantity, requisitionNumber, cost_center, gl_account, cost, currency) {
-		var returnCode = {};
-		returnCode.code = 'SUCCESS';
-		returnCode.message = '';
 		try {
 			try {
 				var rn = new GlideRecord('x_tjc_easy_asset_requisition');
@@ -121,16 +39,79 @@ EasyAssetHelper.prototype = {
 					gr.insert();
 				}
 			} catch(e) {
-				returnCode.code = 'HARD LIGHT';
-				returnCode.message = e;
+				return 'HARD LIGHT';
 			}
 		} catch(e) {
-			returnCode.code = 'VIGILANCE WING';
-			returnCode.message = e;
+			return 'VIGILANCE WING';
 		}
-		return returnCode;
+		return 'SUCCESS';
 	},
-
+	
+	
+	update: function(sys_id, po, invoice_number) {
+		try {
+			try {
+				var ear = new GlideRecord('x_tjc_easy_asset_requisition');
+				ear.get(sys_id);
+				ear.po_number = po;
+				ear.stage = 1;
+				ear.update();
+			}catch(e){
+				return 'FIGHTING LION';
+			}
+			try {
+				var cmdb = new GlideRecord('cmdb');
+				cmdb.addQuery('x_tjc_easy_asset_requisition_record', sys_id);
+				cmdb.query();
+				while (cmdb.next()) {
+					cmdb.po_number = po;
+					cmdb.invoice_number = invoice_number;
+					cmdb.order_date = new GlideDateTime();
+					cmdb.update();
+				}
+			}catch(e){
+				return 'SUNSHOT';
+			}
+		}catch(e){
+			return 'DARCI';
+		}
+		return 'SUCCESS';
+	},
+	
+	getPO : function(sys_id) {
+		var gr = new GlideRecord('x_tjc_easy_asset_requisition');
+		gr.get(sys_id);
+		return gr.po_number.toString();
+	},
+	
+	arrive: function(sys_id) {
+		try {
+			try {
+				var gr = new GlideRecord('x_tjc_easy_asset_requisition');
+				gr.get(sys_id);
+				gr.setValue('stage', 2);
+				gr.update();
+			} catch(e) {
+				return 'RISKRUNNER';
+			}
+			try {
+				var cmdb = new GlideRecord('cmdb');
+				cmdb.addQuery('x_tjc_easy_asset_requisition_record', sys_id);
+				cmdb.query();
+				
+				while (cmdb.next()) {
+					cmdb.delivery_date = new GlideDateTime();
+					cmdb.update();
+				}
+			} catch(e) {
+				return 'BOREALIS';
+			}
+		} catch(e){
+			return 'WARDCLIFFE COIL';
+		}
+		return 'SUCCESS';
+	},
+	
     type: 'EasyAssetHelper'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
@@ -138,7 +119,7 @@ EasyAssetHelper.prototype = {
         <sys_created_on>2017-11-14 15:15:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>226e4c7713d2c300c6f5ff82e144b071</sys_id>
-        <sys_mod_count>41</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>EasyAssetHelper</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy>read</sys_policy>
@@ -146,6 +127,6 @@ EasyAssetHelper.prototype = {
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sys_script_include_226e4c7713d2c300c6f5ff82e144b071</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:41:16</sys_updated_on>
+        <sys_updated_on>2017-11-20 21:06:36</sys_updated_on>
     </sys_script_include>
 </record_update>

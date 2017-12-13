@@ -3,37 +3,37 @@
     <sp_instance_link action="INSERT_OR_UPDATE">
         <active>true</active>
         <class_name>ea-page-link</class_name>
-        <color>warning</color>
+        <color>default</color>
         <css/>
-        <glyph>send-o</glyph>
+        <glyph>qrcode</glyph>
         <id/>
         <kb_article/>
         <kb_category/>
         <kb_topic/>
-        <order>1</order>
+        <order>0</order>
         <roles/>
         <sc_cat_item/>
         <sc_category/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="2">7a3d7eb5131acb44c6f5ff82e144b0bb</sp_column>
-        <sp_page/>
+        <sp_column display_value="3">0c45a930130b8740c6f5ff82e144b0bc</sp_column>
+        <sp_page display_value="easy_asset_qrcode">35d6b27813fe0300c6f5ff82e144b0ab</sp_page>
         <sp_widget display_value="Icon Link">3caa67afcb13020000f8d856634c9c2e</sp_widget>
         <sys_class_name>sp_instance_link</sys_class_name>
         <sys_created_by>jha</sys_created_by>
-        <sys_created_on>2017-11-08 22:51:28</sys_created_on>
+        <sys_created_on>2017-12-12 20:40:09</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>824d3eb5131acb44c6f5ff82e144b0f1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>Check in / Check out</sys_name>
+        <sys_id>f945e930130b8740c6f5ff82e144b00e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Create QR Code</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
-        <sys_update_name>sp_instance_link_824d3eb5131acb44c6f5ff82e144b0f1</sys_update_name>
+        <sys_update_name>sp_instance_link_f945e930130b8740c6f5ff82e144b00e</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-08 22:56:30</sys_updated_on>
-        <title>Check in / Check out</title>
+        <sys_updated_on>2017-12-12 20:41:39</sys_updated_on>
+        <title>Create QR Code</title>
         <type>page</type>
         <url/>
         <widget_parameters><![CDATA[{

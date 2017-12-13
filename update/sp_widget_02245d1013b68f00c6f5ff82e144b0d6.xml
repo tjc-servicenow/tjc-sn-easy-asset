@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope,$rootScope,$timeout,spUtil) {
+	var c = this;
+	
+	$scope.inputBlur = function() {
+		var s = $('#' + this.i.toString()).val() || '';
+		
+		if (s != '') {
+			c.data.cmdb = {};
+			c.data.cmdb.id = this.i;
+			c.data.cmdb.serial = s;
+			c.data.action = "updateCI";
+			c.server.update().then(function() {
+				c.data.action = undefined;
+				s = '';
+			});
+		}
+  }
+	
+	$rootScope.$on('findRecordsColumn', function(event,data) {
+		$timeout(function() {
+			c.data.cmdbLookupColumn = data;
+		});
+	});
+	
+	$rootScope.$on('findRecords', function(event,data) {
+		$timeout(function() {
+			c.data.cmdbLookup = data;
+			loadData();
+		});
+	});
+	
+	function loadData() {
+		c.data.action = "getRecords";
+		c.server.update().then(function() {
+			$scope.number = $scope.data.recordCount;
+			c.data.action = undefined;
+		})
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.panel {
+  margin-top: 10px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>easy_asset_serial_list</id>
+        <internal>false</internal>
+        <link/>
+        <name>Easy Asset Serial No List</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	if (input) {
+		if (input.action == 'getRecords')
+			getRecords();
+		if (input.action == 'updateCI')
+			updateCI();
+	}
+	
+	function updateCI() {
+		var sys_id = input.cmdb.id;
+		var serial = input.cmdb.serial;
+		
+		var cmdb = new GlideRecord('cmdb');
+		cmdb.get(sys_id);
+		cmdb.setValue('serial_number', serial);
+		cmdb.update();
+	}
+	
+	function getRecords() {
+		var lookupColumn = input.cmdbLookupColumn;
+		var lookup = input.cmdbLookup;
+		
+		var cmdb = new GlideRecord('cmdb');
+		cmdb.addQuery(lookupColumn, lookup);
+		cmdb.query();
+		
+		data.o = [];
+		while (cmdb.next()) {
+			data.o.push(cmdb.sys_id.toString());
+		}
+	}
+	
+	function getCICount() {
+		var lookupColumn = input.cmdbLookupColumn;
+		var lookup = input.cmdbLookup;
+		data.recordCount = getRecordCount(lookupColumn, lookup);
+	}
+	
+	function getRecordCount(lookupColumn, lookup) {
+		var cmdb = new GlideAggregate('cmdb');
+		cmdb.addQuery(lookupColumn, lookup);
+		cmdb.addAggregate('COUNT');
+		cmdb.query();
+		
+		var count = 0;
+		if (cmdb.next())
+			count = cmdb.getAggregate('COUNT');
+		
+		return count;
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-28 19:52:40</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>02245d1013b68f00c6f5ff82e144b0d6</sys_id>
+        <sys_mod_count>104</sys_mod_count>
+        <sys_name>Easy Asset Serial No List</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_widget_02245d1013b68f00c6f5ff82e144b0d6</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-12-13 15:27:24</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default" ng-show="data.o && data.o.length != 0">
+  <div class="panel-body">
+    
+   <label>Please enter the serial no. for each item</label>
+   <ul class="list-group">
+     <li ng-repeat="i in data.o track by $index" class="list-group-item">
+       <input id="{{i}}" class="form-control" ng-blur="inputBlur()">
+     </li>
+    </ul>
+    
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

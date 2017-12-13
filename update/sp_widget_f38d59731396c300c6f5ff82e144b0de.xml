@@ -22,7 +22,7 @@
 	$scope.submit = function() {
 		var url = '/api/x_tjc_easy_asset/easyasset/update?' +
 				'sys_id=' + $scope.requisition +
-				'&po=' + $scope.ponumber +
+				'&po=' + 'PO' + $scope.ponumber +
 				'&invoice=' + $scope.invoice;
 		
 		$scope.submitStatus = true;
@@ -30,29 +30,12 @@
 		
 		$http.patch(url).then(
 			function(r){
-				if (r.data.result.code != 'SUCCESS') {
-					spUtil.addErrorMessage('Something went wrong: ' + r.data.result.code);
-					console.log(r);
+				if (r.data.result != 'SUCCESS') {
+					err(r);
 				} else {
 					$scope.buttonText = 'Updating Complete!';
 				}
-			}, function(e){
-				console.log(e);
-				var errorMessage = 'Something went wrong!';
-				var errorCode = '';
-				
-				if (e.status == 400) {errorCode = 'COAL'}
-				if (e.status == 401) {errorCode = 'IRON'}
-				if (e.status == 402) {errorCode = 'REDSTONE'}
-				if (e.status == 403) {errorCode = 'DIAMONDS'}
-				if (e.status == 404) {errorCode = 'VOID'}
-				if (e.status == 405) {errorCode = 'LAPIS'}
-				if (e.status == 406) {errorCode = 'SANDSTONE'}
-				if (e.status == 408) {errorCode = 'GOLD'}
-				if (e.status == 409) {errorCode = 'QUARTZ'}
-
-				spUtil.addErrorMessage(errorMessage + ' ' + errorCode);
-			});
+			}, function(e) { err(e) });
 	} 
 	
 	$scope.requisitionChange = function() {
@@ -61,26 +44,25 @@
 			$http.get(url).then(
 				function(r) {
 					toggle();
-					//$('#ponumber').val(r.data.result);
 					$scope.ponumber = r.data.result;
-				}, function(e) {
-				console.log(e);
-				var errorMessage = 'Something went wrong!';
-				var errorCode = '';
-				
-				if (e.status == 400) {errorCode = 'COAL'}
-				if (e.status == 401) {errorCode = 'IRON'}
-				if (e.status == 402) {errorCode = 'REDSTONE'}
-				if (e.status == 403) {errorCode = 'DIAMONDS'}
-				if (e.status == 404) {errorCode = 'VOID'}
-				if (e.status == 405) {errorCode = 'LAPIS'}
-				if (e.status == 406) {errorCode = 'SANDSTONE'}
-				if (e.status == 408) {errorCode = 'GOLD'}
-				if (e.status == 409) {errorCode = 'QUARTZ'}
-
-				spUtil.addErrorMessage(errorMessage + ' ' + errorCode);
-			});
+				}, function(e) { err(e) });
 		} else { toggle(); }
+	}
+	
+	function err(e) {
+		var m = e.data.result.code;
+		if (e.status != 200) {
+			if (e.status == 400) {m = 'COAL'}
+			if (e.status == 401) {m = 'IRON'}
+			if (e.status == 402) {m = 'REDSTONE'}
+			if (e.status == 403) {m = 'DIAMONDS'}
+			if (e.status == 404) {m = 'VOID'}
+			if (e.status == 405) {m = 'LAPIS'}
+			if (e.status == 406) {m = 'SANDSTONE'}
+			if (e.status == 408) {m = 'GOLD'}
+			if (e.status == 409) {m = 'QUARTZ'}
+		}
+		spUtil.addErrorMessage('Something went wrong: ' + m);
 	}
 }
 ]]></client_script>
@@ -92,7 +74,7 @@
         <docs/>
         <field_list/>
         <has_preview>true</has_preview>
-        <id>easy-asset-update</id>
+        <id>easy_asset_update</id>
         <internal>false</internal>
         <link/>
         <name>Easy Asset Update</name>
@@ -120,7 +102,7 @@
         <sys_created_on>2017-11-14 21:01:05</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f38d59731396c300c6f5ff82e144b0de</sys_id>
-        <sys_mod_count>59</sys_mod_count>
+        <sys_mod_count>64</sys_mod_count>
         <sys_name>Easy Asset Update</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -128,7 +110,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_widget_f38d59731396c300c6f5ff82e144b0de</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 14:33:54</sys_updated_on>
+        <sys_updated_on>2017-12-13 15:27:40</sys_updated_on>
         <template><![CDATA[<div>
   <div class="form-group">
     <label for="requisition">Requisition:</label>
@@ -138,7 +120,7 @@
     </select>
   </div>
    <div id="pogroup" class="form-group" hidden="true">
-    <label for="ponumber">PO Number:</label>
+    <label for="ponumber">PO Number (Don't include the PO, it will be added automatically)</label>
     <input type="text" id="ponumber" class="form-control" ng-model="ponumber" required="required">
   </div>
   <div id="invoicegroup" class="form-group" hidden="true">

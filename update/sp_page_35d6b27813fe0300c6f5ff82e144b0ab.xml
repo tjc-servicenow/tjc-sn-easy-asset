@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <css/>
+        <draft>false</draft>
+        <id>easy_asset_qrcode</id>
+        <internal>false</internal>
+        <public>false</public>
+        <roles>x_tjc_easy_asset.user</roles>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-30 16:20:48</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>35d6b27813fe0300c6f5ff82e144b0ab</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>easy_asset_qrcode</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_page_35d6b27813fe0300c6f5ff82e144b0ab</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-12-12 20:46:00</sys_updated_on>
+        <title>Easy Asset QR Code</title>
+    </sp_page>
+</record_update>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($rootScope,$scope,$timeout,spUtil) {
+	var c = this;
+	
+	var lookup = '';
+	$scope.getButtonStatus = false;
+	$scope.getButtonText = $scope.data.btn.getRecords;
+	
+	$scope.find = function() {
+		$scope.getButtonStatus = true;
+		$scope.getButtonText = $scope.data.btn.getting;
+		
+		if (lookup != '' || lookup != undefined) {
+			$rootScope.$broadcast('findRecordsColumn', $scope.lookup);
+			$rootScope.$broadcast('findRecords', $('#' + $scope.lookup).val());
+		} else {
+			spUtil.addInfoMessage("Please input something...");
+		}
+		
+		$scope.getButtonStatus = false;
+		$scope.getButtonText = $scope.data.btn.getRecords;
+	}
+	
+	$scope.showFields = function() {
+		if ($scope.lookup == 'po_number') {
+			$('#requisitionGroup').hide();
+			$('#poGroup').show();
+			$('#invoiceGroup').hide();
+		}
+		if ($scope.lookup == 'invoice_number') {
+			$('#requisitionGroup').hide();
+			$('#poGroup').hide();
+			$('#invoiceGroup').show();
+		}
+		if ($scope.lookup == '' || $scope.lookup == undefined || $scope.lookup == null) {
+			$('#requisitionGroup').hide();
+			$('#poGroup').hide();
+			$('#invoiceGroup').hide();
+			
+			lookup = '';
+		}
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>easy_asset_get_cis</id>
+        <internal>false</internal>
+        <link/>
+        <name>Easy Asset Get CIs</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.btn = {};
+	data.btn.getRecords = gs.getMessage('Get Records');
+	data.btn.getting = gs.getMessage('Getting Records...');
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-28 16:13:46</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ab02a0d413368f00c6f5ff82e144b018</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>Easy Asset Get CIs</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_widget_ab02a0d413368f00c6f5ff82e144b018</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-28 20:57:05</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="form-group">
+    <label for="lookup">Select how you want to look up the configuration items</label>
+    <select class="form-control" ng-model="lookup" ng-change="showFields()">
+      <option value="">-- Select One --</option>
+      <option value="po_number">PO Number</option>
+      <option value="invoice_number">Invoice Number</option>
+    </select>
+  </div>
+  <div class="form-group" id="poGroup" hidden>
+    <label for="po_number">Enter the PO Number</label>
+    <input id="po_number" class="form-control" ng-model="ponumber">
+  </div>
+  <div class="form-group" id="invoiceGroup" hidden>
+    <label for="invoice_number">Enter the Invoice Number</label>
+    <input id="invoice_number" class="form-control" ng-model="invoice">
+  </div>
+  
+  <button class="btn btn-primary btn-block" ng-disabled="getButtonStatus" ng-click="find()">
+    {{getButtonText}}
+  </button>
+</div>]]></template>
+    </sp_widget>
+</record_update>

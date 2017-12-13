@@ -2,22 +2,22 @@
 <record_update table="x_tjc_easy_asset_requisition">
     <x_tjc_easy_asset_requisition action="INSERT_OR_UPDATE">
         <active>false</active>
-        <po_number>PO404</po_number>
-        <requisition_number>REC4000</requisition_number>
+        <po_number>PO456</po_number>
+        <requisition_number>R456</requisition_number>
         <stage>2</stage>
         <sys_class_name>x_tjc_easy_asset_requisition</sys_class_name>
         <sys_created_by>jha</sys_created_by>
-        <sys_created_on>2017-11-20 16:52:38</sys_created_on>
+        <sys_created_on>2017-12-13 15:28:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>323e1ba5132ec700c6f5ff82e144b014</sys_id>
+        <sys_id>8987e98d13870b40c6f5ff82e144b0ac</sys_id>
         <sys_mod_count>2</sys_mod_count>
-        <sys_name>REC4000</sys_name>
+        <sys_name>R456</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
-        <sys_update_name>x_tjc_easy_asset_requisition_323e1ba5132ec700c6f5ff82e144b014</sys_update_name>
+        <sys_update_name>x_tjc_easy_asset_requisition_8987e98d13870b40c6f5ff82e144b0ac</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:55:33</sys_updated_on>
+        <sys_updated_on>2017-12-13 15:29:02</sys_updated_on>
     </x_tjc_easy_asset_requisition>
 </record_update>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($timeout,$scope,spUtil,$rootScope) {
+  /* widget controller */
+  var c = this;
+	var qr = new QRCode('qrcode');
+	
+	$scope.onload = function() {
+		var table = c.data.table;
+		var sysID = c.data.sysID;
+		
+		if (table != undefined && sysID != undefined)
+			qr.makeCode(c.data.baseURL + table + '.do?sys_id=' + sysID);
+			
+	}
+	
+	$rootScope.$on('recordID', function(event,data) {
+		$timeout(function() {
+			c.data.action = 'buildQR';
+			
+			$scope.data.recordID = data;
+			c.server.update().then(function() {
+				c.data.action = undefined;
+				qr.clear();
+				qr.makeCode($scope.data.qrcode);
+			});
+		});
+	});
+	
+	$scope.print = function() {
+		$('#qrcode').print();
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.qrcodePanel {
+  width:100%;
+  height:100%;
+}
+
+#qrcode {
+  width:260px;
+  height:260px;
+  margin-top:15px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>easy_asset_qrcode_generator</id>
+        <internal>false</internal>
+        <link/>
+        <name>Easy Asset QRCode Generator</name>
+        <option_schema>[]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function(gs, data, $sp) {
+	
+	data.table = $sp.getParameter('table');
+	data.sysID = $sp.getParameter('sys_id');
+	data.baseURL = gs.getProperty("glide.servlet.uri");
+	
+	if (input) {
+		if (input.action == 'buildQR')
+			buildQR(input.recordID);
+	}
+	
+	function buildQR(sysID) {
+		var gr = new GlideRecord('cmdb');
+		gr.get(sysID);
+		data.qrcode = gs.getProperty("glide.servlet.uri") + gr.getTableName() + '.do?sys_id=' + gr.getUniqueValue();
+	}
+})(gs, data, $sp);]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-27 19:36:35</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e4e6cc4413f64f00c6f5ff82e144b0ed</sys_id>
+        <sys_mod_count>112</sys_mod_count>
+        <sys_name>Easy Asset QRCode Generator</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_widget_e4e6cc4413f64f00c6f5ff82e144b0ed</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-12-13 15:27:04</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default qrcodePanel" ng-init="onload()">
+  <div class="panel-body">
+    <button class="btn btn-primary" ng-click="print()">
+      <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+      Print QR Code
+    </button>
+    <div id="qrcode"></div>
+  
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

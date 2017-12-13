@@ -18,7 +18,7 @@
         <sys_created_on>2017-11-13 23:35:46</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>73573cab139a8300c6f5ff82e144b0f1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -26,7 +26,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_instance_73573cab139a8300c6f5ff82e144b0f1</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-16 21:32:25</sys_updated_on>
+        <sys_updated_on>2017-11-21 16:59:31</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters><![CDATA[{
@@ -41,6 +41,10 @@
 	"currency": {
 		"value": "USD",
 		"displayValue": "USD"
+	},
+	"quantitymax": {
+		"value": null,
+		"displayValue": ""
 	}
 }]]></widget_parameters>
     </sp_instance>

@@ -1,48 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
-        <client_script><![CDATA[function($scope,$http,$timeout,spUtil) {
-  /* widget controller */
-  var c = this;
-	
+        <client_script><![CDATA[function($scope,$http,spUtil,$uibModal) {
+	var c = this;
 	$scope.submitted = false;
 	$scope.submitButtonText = $scope.data.messages.submit;
+	
+	$scope.quantityMaxText = $scope.data.messages.maxText;
+	var max = Number($scope.data.max);
+	
 	$scope.submit = function() {
+		if (Number($scope.quantity) > max) {
+			$scope.modalInstance = $uibModal.open({
+				templateUrl: 'modalTemplate',
+				scope: $scope
+			});
+		} else {
+			httpPost();
+		}
+	}
+	
+	$scope.qYesBtn = function () {
+		closeModal();
+		httpPost();
+	}
+	
+	$scope.qNoBtn = function () {
+		closeModal();
+	}
+	
+	function closeModal() {
+		$scope.modalInstance.close();
+	}
+	
+	function httpPost() {
 		var url = '/api/x_tjc_easy_asset/easyasset/create?' + 
 				'table=' + $scope.deviceType +
 				'&quantity=' + $scope.quantity +
-				'&requisition_number=' + $scope.reim +
+				'&requisition_number=' + 'R' + $scope.reim +
 				'&cost_center=' + $scope.options.cost_center + 
 				'&gl_account=' + $scope.options.gl_account +
 				'&cost=' + $scope.cost + 
 				'&currency=' + $scope.options.currency;
+		
 		$scope.submitted = true;
-		$scope.submitButtonText = $scope.data.messages.submitted;
+		$scope.submitButtonText = $scope.data.messages.submitting;
 		
 		var httpResponse = $http.post(url).then(
-			function(result) {
-				if (result.data.result.code != 'SUCCESS') {
-					spUtil.addErrorMessage('Something went wrong: ' + result.data.result);
-					console.log(result);
-				}
-			}, function(error) {
-				var errorMessage = 'Something went wrong: ';
-				var errorCode = 'HIPPOPOTAMUS';
-				
-				if (error.status == 400) {errorCode = 'COAL'}
-				if (error.status == 401) {errorCode = 'IRON'}
-				if (error.status == 402) {errorCode = 'REDSTONE'}
-				if (error.status == 403) {errorCode = 'DIAMONDS'}
-				if (error.status == 404) {errorCode = 'VOID'}
-				if (error.status == 405) {errorCode = 'LAPIS'}
-				if (error.status == 406) {errorCode = 'SANDSTONE'}
-				if (error.status == 408) {errorCode = 'GOLD'}
-				if (error.status == 409) {errorCode = 'QUARTZ'}
-				
-				spUtil.addErrorMessage(errorMessage + errorCode);
-				console.log(error);
-			}
+			function(r) {
+				if (r.data.result != 'SUCCESS') {
+					err(r);
+				} else
+					$scope.submitButtonText = $scope.data.messages.submitted;
+			}, function(e) { err(e) }
 		);
+	}
+	
+	function err(e) {
+		var m = e.data.result.code;
+		if (e.status != 200) {
+			if (e.status == 400) {m = 'COAL'}
+			if (e.status == 401) {m = 'IRON'}
+			if (e.status == 402) {m = 'REDSTONE'}
+			if (e.status == 403) {m = 'DIAMONDS'}
+			if (e.status == 404) {m = 'VOID'}
+			if (e.status == 405) {m = 'LAPIS'}
+			if (e.status == 406) {m = 'SANDSTONE'}
+			if (e.status == 408) {m = 'GOLD'}
+			if (e.status == 409) {m = 'QUARTZ'}
+		}
+		spUtil.addErrorMessage('Something went wrong: ' + m);
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -57,13 +84,16 @@
         <internal>false</internal>
         <link/>
         <name>Easy Asset Create</name>
-        <option_schema>[{"name":"gl_account","label":"GL Account","type":"string"},{"displayValue":"Cost Center","name":"cost_center","label":"Cost center","type":"reference","value":"cmn_cost_center","ed":{"reference":"cmn_cost_center"}},{"name":"currency","default_value":"USD","label":"Currency","type":"choice","choices":[{"label":"EUR","value":"EUR"},{"label":"GBP","value":"GBP"},{"label":"USD","value":"USD"}]}]</option_schema>
+        <option_schema>[{"name":"gl_account","label":"GL Account","type":"string"},{"displayValue":"Cost Center","name":"cost_center","label":"Cost center","type":"reference","value":"cmn_cost_center","ed":{"reference":"cmn_cost_center"}},{"name":"currency","default_value":"USD","label":"Currency","type":"choice","choices":[{"label":"EUR","value":"EUR"},{"label":"GBP","value":"GBP"},{"label":"USD","value":"USD"}]},{"hint":"This is the max quantity before warning the end user","name":"max_quantity","default_value":"100","label":"Max Quantity","type":"integer"}]</option_schema>
         <public>false</public>
         <roles/>
-        <script><![CDATA[(function() {
+        <script><![CDATA[(function(data,options) {
 	data.messages = {};
 	data.messages.submit = gs.getMessage('Submit');
+	data.messages.submitting = gs.getMessage('Submitting...');
 	data.messages.submitted = gs.getMessage('Submitted');
+	data.messages.maxText = gs.getMessage(options.max_quantity);
+	data.max = options.max_quantity;
 	
 	/* Creates the values for the device type dropdown */
 	var tableList = new GlideTableHierarchy('cmdb_ci').getAllExtensions();
@@ -80,14 +110,14 @@
 		o.name = tables.getValue('name');
 		data.cmdbChoices.push(o);
 	}
-})();]]></script>
+})(data,options);]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>jha</sys_created_by>
         <sys_created_on>2017-11-09 21:40:23</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>ea96770213920f44c6f5ff82e144b052</sys_id>
-        <sys_mod_count>121</sys_mod_count>
+        <sys_mod_count>217</sys_mod_count>
         <sys_name>Easy Asset Create</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy/>
@@ -95,7 +125,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sp_widget_ea96770213920f44c6f5ff82e144b052</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-16 21:31:56</sys_updated_on>
+        <sys_updated_on>2017-12-12 22:36:49</sys_updated_on>
         <template><![CDATA[<div>
   <div class="form-group">
     <label for="deviceType">Please choose the device type:</label>
@@ -107,22 +137,38 @@
   
   <div class="form-group">
     <label for="quantity">Quantity:</label>
-    <input ng-model="quantity" type="number" value="1" class="form-control">
+    <input ng-model="quantity" type="number" class="form-control" required="required">
   </div>
   
   <div class="form-group">
-    <label for="reqn">Requisition Number</label>
-    <input ng-model="reim" type="text" class="form-control">
+    <label for="reqn">Requisition Number (Don't include the R, it will be added automatically)</label>
+    <input ng-model="reim" type="text" class="form-control" required="required">
   </div>
   
   <div class="form-group">
     <label for="cost">Cost per item (not total)</label>
-    <input ng-model="cost" type="number" placeholder="1000.00" class="form-control">
+    <input ng-model="cost" type="number" class="form-control" required="required">
   </div>
   
   <button class="btn btn-primary btn-block" ng-disabled="submitted" ng-click="submit()">
     {{submitButtonText}}
   </button>
+
+  <script type="text/ng-template" id="modalTemplate">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Modal Window</h4>
+        </div>
+      <div class="panel-body wrapper-xl">
+        The quantity is greater than {{quantityMaxText}}, is this correct?
+        </div>
+      <div class="panel-footer text-right">
+        <button class="btn btn-success" ng-click="qYesBtn()">Yes</button>
+        <button class="btn btn-danger" ng-click="qNoBtn()">No</button>
+      </div>
+    </div>
+  </script>
+  
 </div>]]></template>
     </sp_widget>
 </record_update>

@@ -9,7 +9,7 @@
         <container_class_name/>
         <name>Easy Asset Update - Container 1</name>
         <order>1</order>
-        <sp_page display_value="ea_update">187305731356c300c6f5ff82e144b095</sp_page>
+        <sp_page display_value="easy_asset_update">187305731356c300c6f5ff82e144b095</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
         <sys_created_by>jha</sys_created_by>

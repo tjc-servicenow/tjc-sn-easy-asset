@@ -11,11 +11,14 @@
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 	var sys_id = request.queryParams.sys_id;
 	
+	if (sys_id == 'undefined')
+		throw 'sys_id = ' + sys_id;
+	
 	try {
 		return new EasyAssetHelper().arrive(sys_id.toString());
 	} catch(e) {		
 		gs.error("Easy Asset API Error: " + e );
-		return { code: 'COLDHEART', message: 'API Failure' };
+		return 'COLDHEART';
 	}
 })(request, response);]]></operation_script>
         <operation_uri>/api/x_tjc_easy_asset/easyasset/arrived</operation_uri>
@@ -31,7 +34,7 @@
         <sys_created_on>2017-11-16 22:34:11</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>7325cc2413ea0700c6f5ff82e144b0cd</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>arrived</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy>read</sys_policy>
@@ -39,7 +42,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sys_ws_operation_7325cc2413ea0700c6f5ff82e144b0cd</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:48:53</sys_updated_on>
+        <sys_updated_on>2017-11-20 21:14:08</sys_updated_on>
         <web_service_definition display_value="easyasset">488ccf5313d683085b11345fd144b038</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope,$rootScope,$timeout,spUtil) {
+  var c = this;
+	
+	// Shows the record warning when set to true;
+	$scope.showRecordWarning = false;
+	$scope.warningText = '';
+	
+	function broadcastData(sysID) {
+		$timeout(function() {
+			$rootScope.$broadcast('recordID', sysID);
+		});
+	}
+	
+	$scope.validateRecord = function() {
+		c.data.action = 'validateRecord';
+		if ($scope.lookup) {
+			c.data.lookup = $scope.lookup;
+			c.server.update().then(function() {
+				c.data.action = undefined;
+
+				var n = Number(c.data.recordCount);
+				if (n == 0) {
+					$scope.warningText = 'No records found';
+					$scope.showRecordWarning = true;
+				}
+				if (n > 1) {
+					$scope.warningText = 'Multipe records found, please select one below...';
+					$scope.showRecordWarning = true;
+					$scope.data.multiRecords = true;
+					getRecords();
+				}
+				if (n == 1) {
+					$scope.showRecordWarning = false;
+					$scope.data.multiRecords = false;
+					$scope.warningText = '';
+					getRecord();
+				}
+			});
+		}
+	}
+	
+	$scope.recordSelected = function(sysID) {
+		$(':button').prop('disabled', false);
+		$('#'+sysID).attr("disabled", true);
+		
+		broadcastData(sysID);
+	}
+	
+	function getRecord() {
+		c.data.action = 'getRecord';
+		c.server.update().then(function() {
+			c.data.action = undefined;
+			broadcastData($scope.data.recordID);
+		})
+	}
+	
+	function getRecords() {
+		c.data.action = 'getRecords';
+		c.server.update().then(function() {
+			c.data.action = undefined;
+		})
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.btn:focus,.btn:active {}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>easy_asset_ci_lookup</id>
+        <internal>false</internal>
+        <link/>
+        <name>Easy Asset CI lookup</name>
+        <option_schema>[{"hint":"","name":"table_column_lookup","default_value":"sys_id","label":"Table column to use for lookup","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function(gs, options, data, $sp, input) {
+	data.column = options.table_column_lookup;
+	// Uncomment to debug and hard set the column used for lookup
+	//data.column = 'serial_number';
+	data.cmdbOptions = [];
+	data.recordID = '';
+	
+	var gr = new GlideRecord('cmdb');
+	data.columnDisplayValue = $sp.getField(gr, data.column).label;
+	
+	if (input) {
+		if (input.action == 'validateRecord')
+			validateRecord();
+		if (input.action == 'getRecords')
+			getRecords(data.column, input.lookup);
+		if (input.action == 'getRecord')
+			getRecord(data.column, input.lookup);
+	}
+	
+	function validateRecord() {
+		var d = input.lookup || '';
+		if (d == '' || d == undefined)
+			return;
+		var c = getCount(data.column, d);
+
+		data.recordCount = c;
+	}
+	
+	function getCount(column, lookup) {
+		var cmdb = new GlideAggregate('cmdb');
+		cmdb.addQuery(column, lookup);
+		cmdb.addAggregate('COUNT');
+		cmdb.query();
+		
+		var c = 0;
+		if (cmdb.next()) 
+			 c = cmdb.getAggregate('COUNT');
+		
+		return c;
+	}
+	
+	
+	function getRecords(column, lookup) {
+		var cmdb = new GlideRecord('cmdb');
+		cmdb.addQuery(column, lookup);
+		cmdb.query();
+		
+		while (cmdb.next()) {
+			data.cmdbOptions.push({
+				l: cmdb.getClassDisplayValue() + ' ' + cmdb.getDisplayValue(),
+				v: cmdb.getUniqueValue()
+			});
+		}
+	}
+	
+	function getRecord(column, lookup) {
+		var cmdb = new GlideRecord('cmdb');
+		cmdb.addQuery(column, lookup);
+		cmdb.query();
+		
+		if (cmdb.next())
+			data.recordID = cmdb.getUniqueValue();
+	}
+})(gs, options, data, $sp, input);]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-30 16:28:49</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>9ba876b813fe0300c6f5ff82e144b05f</sys_id>
+        <sys_mod_count>130</sys_mod_count>
+        <sys_name>Easy Asset CI lookup</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_widget_9ba876b813fe0300c6f5ff82e144b05f</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-12-12 20:48:36</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      
+      <div class="form-group">
+      	<label for="lookup">Enter the {{c.data.columnDisplayValue}} of the CI</label>
+        <input ng-model="lookup" ng-model-options="{debounce:1000}" class="form-control" ng-change="validateRecord()">
+      </div>
+      
+      <div class="alert alert-warning" role="alert" ng-show="showRecordWarning">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      	<span class="sr-only">Warning:</span>
+      	{{warningText}}
+    	</div>
+      
+    </div>
+  </div>
+  
+  
+  <div class="panel panel-default" ng-show="data.multiRecords">
+    <div class="panel-body" ng-show="data.multiRecords">
+      <div id="cmdb">
+      	<button id="{{o.v}}" ng-repeat="o in data.cmdbOptions" ng-click="recordSelected(o.v)" class="btn btn-primary btn-block">
+          {{o.l}}
+        </button>
+    	</div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -15,17 +15,13 @@
 		var invoice = request.queryParams.invoice;
 		
 		if (invoice == 'undefined') invoice = '';
-		if (reqSysID == 'undefined' || po == 'undefined') {
-			throw {
-				code: 'COLDHEART', 
-				message: 'API Failure'
-			};
-		}
+		if (reqSysID == 'undefined' || po == 'undefined')
+			throw 'reqSysID = ' + reqSysID + ', po = ' + po;
 		
-		return (new EasyAssetHelper().update(reqSysID.toString(), po.toString(), invoice.toString()));
+		return new EasyAssetHelper().update(reqSysID.toString(), po.toString(), invoice.toString());
 	} catch(e) {		
 		gs.error("Easy Asset API Error: " + e );
-		return { code: 'COLDHEART', message: 'API Failure' };
+		return 'COLDHEART';
 	}
 })(request, response);]]></operation_script>
         <operation_uri>/api/x_tjc_easy_asset/easyasset/update</operation_uri>
@@ -41,7 +37,7 @@
         <sys_created_on>2017-11-14 18:43:42</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5badb8bf1316c300c6f5ff82e144b055</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>update</sys_name>
         <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
         <sys_policy>read</sys_policy>
@@ -49,7 +45,7 @@
         <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
         <sys_update_name>sys_ws_operation_5badb8bf1316c300c6f5ff82e144b055</sys_update_name>
         <sys_updated_by>jha</sys_updated_by>
-        <sys_updated_on>2017-11-20 16:21:05</sys_updated_on>
+        <sys_updated_on>2017-11-20 21:13:07</sys_updated_on>
         <web_service_definition display_value="easyasset">488ccf5313d683085b11345fd144b038</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>

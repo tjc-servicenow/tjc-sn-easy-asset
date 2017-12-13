@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
+        <sp_dependency display_value="qrcode.min.js">ca2def3413724300c6f5ff82e144b09b</sp_dependency>
+        <sp_widget display_value="Easy Asset QRCode Generator">e4e6cc4413f64f00c6f5ff82e144b0ed</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-11-30 20:20:35</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>12bdef3413724300c6f5ff82e144b013</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>JsBarcode.all.min.js.Easy Asset Barcode Generator</sys_name>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_12bdef3413724300c6f5ff82e144b013</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-11-30 20:20:35</sys_updated_on>
+    </m2m_sp_widget_dependency>
+</record_update>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="2">7ce2037c13fe0300c6f5ff82e144b08b</sp_column>
+        <sp_widget display_value="Easy Asset QRCode Generator">e4e6cc4413f64f00c6f5ff82e144b0ed</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>jha</sys_created_by>
+        <sys_created_on>2017-12-12 14:59:57</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>6a6710b0138f4740c6f5ff82e144b0e3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Easy Asset" source="x_tjc_easy_asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Easy Asset">aaabc5311316cb44c6f5ff82e144b0b9</sys_scope>
+        <sys_update_name>sp_instance_6a6710b0138f4740c6f5ff82e144b0e3</sys_update_name>
+        <sys_updated_by>jha</sys_updated_by>
+        <sys_updated_on>2017-12-12 14:59:57</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+</record_update>
